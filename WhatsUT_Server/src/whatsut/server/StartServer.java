@@ -13,7 +13,7 @@ public class StartServer {
         try {
             java.rmi.registry.LocateRegistry.createRegistry(1099);
             ChatServerInt csi = new ChatServer();
-            Naming.rebind("rmi://192.168.1.108/admin", csi);
+            Naming.rebind("rmi://seu_ip_aqui/admin", csi);
             System.out.println("[Sistema] Servidor de Chat esta pronto.");
         } catch (Exception e) {
             System.out.println("Falha no Servidor de Chat: " + e);
