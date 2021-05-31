@@ -2,7 +2,7 @@
   WhatsUT :man_technologist:
 </h1>
 
-<p align="center">Aplicação de Chat RMI da disciplina de Sistemas Distribuídos.</a>
+<p align="center">Aplicação Chat com RMI.</a>
 </p>
 
 <p align="center">
