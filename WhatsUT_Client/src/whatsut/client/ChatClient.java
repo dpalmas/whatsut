@@ -3,11 +3,6 @@ package whatsut.client;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-/**
- * @author davi on 5/25/21
- * @project WhatsUT_Client
- */
-
 public class ChatClient extends UnicastRemoteObject implements ChatClientInt
 {
 
