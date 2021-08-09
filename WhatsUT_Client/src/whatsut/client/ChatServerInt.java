@@ -8,7 +8,8 @@ import java.util.*;
  * @project WhatsUT_Client
  */
 
-public interface ChatServerInt extends Remote {
+public interface ChatServerInt extends Remote 
+{
     public boolean login(ChatClientInt a) throws RemoteException;
 
     public void publish(String s) throws RemoteException;
