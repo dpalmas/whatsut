@@ -8,25 +8,30 @@ import java.rmi.server.UnicastRemoteObject;
  * @project WhatsUT_Client
  */
 
-public class ChatClient extends UnicastRemoteObject implements ChatClientInt {
+public class ChatClient extends UnicastRemoteObject implements ChatClientInt
+{
 
     private String name;
     private ChatUI ui;
 
-    public ChatClient(String s) throws RemoteException {
+    public ChatClient(String s) throws RemoteException
+    {
         name = s;
     }
 
-    public void tell(String st) throws RemoteException {
+    public void tell(String st) throws RemoteException
+    {
         System.out.println(st);
         ui.writeMsg(st);
     }
 
-    public String getName() throws RemoteException {
+    public String getName() throws RemoteException
+    {
         return name;
     }
 
-    public void setGUI(ChatUI chatUI) {
+    public void setGUI(ChatUI chatUI)
+    {
         ui = chatUI;
     }
 }
