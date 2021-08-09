@@ -8,11 +8,6 @@ import java.awt.event.*;
 import java.rmi.Naming;
 import java.util.*;
 
-/**
- * @author davi on 5/25/21
- * @project WhatsUT_Client
- */
-
 public class ChatUI
 {
     JTextArea tx;
