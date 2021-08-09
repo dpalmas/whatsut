@@ -13,7 +13,8 @@ import java.util.*;
  * @project WhatsUT_Client
  */
 
-public class ChatUI {
+public class ChatUI
+{
     JTextArea tx;
     JTextField tf, ip, name;
     JButton connect;
@@ -22,7 +23,8 @@ public class ChatUI {
     private ChatClient client;
     private ChatServerInt server;
 
-    public ChatUI() {
+    public ChatUI()
+    {
         frame = new JFrame("WhatsUT");
         JPanel main = new JPanel();
         JPanel top = new JPanel();
@@ -53,18 +55,24 @@ public class ChatUI {
         main.add(bottom, BorderLayout.SOUTH);
         main.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-        connect.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        connect.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
                 doConnect();
             }
         });
-        bt.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        bt.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
                 sendText();
             }
         });
-        tf.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        tf.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
                 sendText();
             }
         });
@@ -74,65 +82,86 @@ public class ChatUI {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         System.out.println("Teste ChatUI!");
         ChatUI c = new ChatUI();
     }
 
-    public void doConnect() {
-        if (connect.getText().equals("Conectar")) {
-            if (name.getText().length() < 2) {
+    public void doConnect()
+    {
+        if (connect.getText().equals("Conectar"))
+        {
+            if (name.getText().length() < 2)
+            {
                 JOptionPane.showMessageDialog(frame, "Você precisa digitar um nome.");
                 return;
             }
-            if (ip.getText().length() < 2) {
+            if (ip.getText().length() < 2)
+            {
                 JOptionPane.showMessageDialog(frame, "Você precisa digitar um IP.");
                 return;
             }
-            try {
+            try
+            {
                 client = new ChatClient(name.getText());
                 client.setGUI(this);
                 server = (ChatServerInt) Naming.lookup("rmi://" + ip.getText() + "/admin");
                 server.login(client);
                 updateUsers(server.getConnected());
                 connect.setText("Disconectar");
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(frame, "ERRO, não foi possível conectar...");
             }
-        } else {
+        }
+        else
+        {
             updateUsers(null);
             connect.setText("Conectar");
             //Better to implement Logout ....
         }
     }
 
-    public void sendText() {
-        if (connect.getText().equals("Conectar")) {
+    public void sendText()
+    {
+        if (connect.getText().equals("Conectar"))
+        {
             JOptionPane.showMessageDialog(frame, "Você precisa se conectar primeiro.");
             return;
         }
         String st = tf.getText();
         st = "[" + name.getText() + "] " + st;
         tf.setText("");
-        try {
+        try
+        {
             server.publish(st);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
 
-    public void writeMsg(String st) {
+    public void writeMsg(String st)
+    {
         tx.setText(tx.getText() + "\n" + st);
     }
 
-    public void updateUsers(Vector v) {
+    public void updateUsers(Vector v)
+    {
         DefaultListModel listModel = new DefaultListModel();
-        if (v != null) for (int i = 0; i < v.size(); i++) {
-            try {
+        if (v != null) for (int i = 0; i < v.size(); i++)
+        {
+            try
+            {
                 String tmp = ((ChatClientInt) v.get(i)).getName();
                 listModel.addElement(tmp);
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
         }
