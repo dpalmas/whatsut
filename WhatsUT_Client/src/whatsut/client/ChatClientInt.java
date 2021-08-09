@@ -7,7 +7,8 @@ import java.rmi.*;
  * @project WhatsUT_Client
  */
 
-public interface ChatClientInt extends Remote {
+public interface ChatClientInt extends Remote 
+{
     public void tell(String name) throws RemoteException;
 
     public String getName() throws RemoteException;
